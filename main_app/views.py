@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from django.views.generic import ListView, DetailView
 # Add the two imports below
