@@ -10,6 +10,7 @@ urlpatterns = [
     path('animes/create/', views.AnimeCreate.as_view(), name='animes_create'),
     path('animes/<int:pk>/update/', views.AnimeUpdate.as_view(), name='animes_update'),
     path('animes/<int:pk>/delete/', views.AnimeDelete.as_view(), name='animes_delete'),
+    path('searchval/', views.searchbar, name='searchbar'),
 
 # New url pattern below
     path('accounts/signup/', views.signup, name='signup'),

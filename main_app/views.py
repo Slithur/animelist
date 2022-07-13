@@ -1,4 +1,6 @@
+from urllib import request, response
 from django.shortcuts import redirect, render
+import requests
 
 from django.views.generic import ListView, DetailView
 # Add the two imports below
@@ -14,6 +16,20 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Anime
 
 # Create your views here.
+
+
+# anime_name = input("")
+# response = requests.get(f'https://api.jikan.moe/v4/anime?letter={anime_name}')
+# data = response.json()
+# print(data['naruto'])
+def searchbar(request):
+  if request.method == 'GET':
+    user_input = request.GET.get('search')
+    response = requests.get(f'https://api.jikan.moe/v4/anime?q={user_input}')
+    data = response.json()['data'][0]
+    print(data['title'])
+    return render (request, 'search.html', {'data': data})
+
 
 
 
