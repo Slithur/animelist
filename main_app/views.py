@@ -26,8 +26,8 @@ def searchbar(request):
   if request.method == 'GET':
     user_input = request.GET.get('search')
     response = requests.get(f'https://api.jikan.moe/v4/anime?q={user_input}')
-    data = response.json()['data'][0]
-    print(data['title'])
+    data = response.json()['data']
+    # print(data['title'])
     return render (request, 'search.html', {'data': data})
 
 
@@ -49,6 +49,8 @@ def animes_index(request):
 def animes_detail(request, anime_id):
     anime = Anime.objects.get(id=anime_id)
     return render(request, 'animes/detail.html', {'animes': anime})
+
+
 
 
 
@@ -74,7 +76,7 @@ def signup(request):
 
 class AnimeCreate(CreateView):
    model = Anime
-   fields = ['name','description', 'year']
+   fields = ['name','description', 'year', 'image']
    success_url = '/animes/'
 
    def form_valid(self, form):
@@ -88,4 +90,7 @@ class AnimeUpdate(UpdateView):
 
 class AnimeDelete(DeleteView):
     model = Anime
+    success_url = '/animes'
+
+class SearchUpdate(UpdateView):
     success_url = '/animes'

@@ -14,7 +14,7 @@
 
 <body>
     <header class="navbar-fixed">
-        <nav>
+        <nav class="navbarr">
             <div class="nav-wrapper">
                 <ul>
                     <li>
@@ -24,7 +24,7 @@
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'animes_create' %}">Add a Anime</a></li>
+                    <!-- <li><a href="{% url 'animes_create' %}">Add a Anime</a></li> -->
                     <li><a href="{% url 'index' %}">View All My Anime</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
@@ -36,11 +36,11 @@
         </nav>
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
+    <!-- <footer class="page-footer">
         <div class="right">
             All Rights Reserved, © 2022 AnimeList
         </div>
-    </footer>
+    </footer> -->
 </body>
 
 </html>

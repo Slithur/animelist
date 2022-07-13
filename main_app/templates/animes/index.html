@@ -1,16 +1,20 @@
 
 {% extends 'base.html' %} {% block content %}
 
-<h1>AnimeList</h1>
-
+<h1 class="inname">AnimeList</h1>
+<div class="searchrow">
 {% for anime in animes %}
+<div class="container">
 <div class="card">
     <a href="{% url 'detail' anime.id %}">
   <div class="card-content">
-    <span class="card-title">{{ animes.name }}</span>
-    <p>Description: {{ animes.description }}</p>
-    <p>Year: {{ animes.year }}</p>
+    <span class="card-title">{{ anime.name }}</span>
+    <img src= "{{ anime.description }}" alt="poster" srcset="">
+    <p>Year: {{ anime.year }}</p>
   </div>
 </a>
 </div>
+</div>
+
 {% endfor %} {% endblock %}
+</div>

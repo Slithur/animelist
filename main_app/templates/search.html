@@ -1,14 +1,32 @@
 {% extends 'base.html' %} {% block content %}
 
+{% for element in data  %}
+
 <div class="card">
     <div class="card-content" >
-      <!-- <span class="card-title">{{ data.title }}</span> -->
-      <img src={{data.images.jpg.image_url}} alt="" srcset="">
-      <!-- <p>{{ data.synopsis }}</p> -->
+      <span class="card-title">{{ element.title }}</span>
+      <img src={{element.images.jpg.image_url}} alt="" srcset="">
+      <p>{{ element.synopsis }}</p>
    </div>
    <div class="card-action">
-    <a href="{% url 'index' %}">Add to my AnimeList</a>
+    
+    <form action= "{% url 'animes_create'  %}" method="post">
+        <!-- Django requires the following for security purposes -->
+        {% csrf_token %}
+        <table>
+          <!-- Render the inputs inside of <tr>s & <td>s -->
+        <input type="hidden" value="{{ element.title }}" name="name" />
+        <input type="hidden" value="{{element.images.jpg.image_url}}" name="description" />
+        <input type="hidden"  value="{{ element.synopsis }}" name="image" />
+        <input type="hidden" value="{{element.year}}"  alt="0" name="year" />
+        </table>
+        <input type="submit" value="Add to my List" class="btn" />
+      </form>
+    <!-- <a href="{% url 'index' %}">Add to my AnimeList</a> -->
+  
     </div>
+ 
+{% endfor %}
 
 
 {% endblock %}

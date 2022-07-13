@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 
 class Anime(models.Model):
   name = models.CharField(max_length=100)
-  description = models.TextField(max_length=250)
+  description = models.TextField(max_length=5000)
+  image = models.TextField(max_length=5000)
   year = models.IntegerField()
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 

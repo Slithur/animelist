@@ -1,12 +1,13 @@
 
 {% extends 'base.html' %} {% block content %}
-
-<h1>Anime Details</h1>
+<div class="detail">
+<h1 class="inname">Anime Details</h1>
 
 <div class="card">
   <div class="card-content">
     <span class="card-title">{{ animes.name }}</span>
-    <p>Description: {{ animes.description }}</p>
+    <img src="{{ animes.description }}" alt="poster" srcset="">
+    <p>Description: {{ animes.image }}</p>
     <p>Year: {{ animes.year }}</p>
 
   </div>
@@ -14,6 +15,7 @@
     <a href="{% url 'animes_update' animes.id %}">Edit</a>
     <a href="{% url 'animes_delete' animes.id %}">Delete</a>
   </div>
+</div>
 </div>
 
 {% endblock %}
