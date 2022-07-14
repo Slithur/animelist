@@ -1,8 +1,9 @@
 
 {% extends 'base.html' %} {% block content %}
 <div class="searchy">
-<h1 id="homename">Search Anime</h1>
+
 {% if user.is_authenticated %}
+<h1 id="homename">Search Anime</h1>
 <form action="{% url 'searchbar' %}" method="get">
     <!-- Django requires the following for security purposes -->
     {% csrf_token %}
@@ -14,6 +15,8 @@
     <input id="src" type="submit" value="Submit!" class="btn" />
   </form>
   {% else %}
+  <h1 id="homenamee">Create your Anime List log in</h1>
+  <img src="https://31.media.tumblr.com/0e4948b5868bc96c402b727bb8f37e9c/tumblr_n41rsjc2sE1smkwalo1_1280.gif" alt="" srcset="" width="200%">
 <p></p>
 
 </div>
